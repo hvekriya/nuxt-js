@@ -13,7 +13,7 @@ export default function(doc) {
     }
 
     if (doc.type === 'page') {
-        return '/about/' + doc.uid
+        return '/blog/' + doc.uid
     }
 
     return '/not-found'

@@ -64,10 +64,11 @@ export default {
      */
     modules: [
         // mofules for full static before `nuxt export` (coming in v2.12)
+        'bootstrap-vue/nuxt',
         '@/modules/static',
         '@/modules/crawler',
         // https://prismic-nuxt.js.org/
-        '@nuxtjs/prismic',
+        '@nuxtjs/prismic'
     ],
 
     prismic: {
