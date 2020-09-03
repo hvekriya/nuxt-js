@@ -1,37 +1,45 @@
 <template>
-  <section>
-    <!-- Slices block component -->
-    <slices-block :slices="slices"/>
-  </section>
+  <b-container>
+    <section>
+      <h1>{{ $prismic.asText(document.title) }}</h1>
+      <prismic-rich-text :field="document.content" />
+      <!-- Slices block component -->
+      <slices-block :slices="slices" />
+    </section>
+  </b-container>
 </template>
 
 <script>
 // Imports for Prismic Slice components
-import SlicesBlock from '~/components/SlicesBlock.vue'
+import SlicesBlock from "~/components/SlicesBlock.vue";
 
 export default {
-  name: 'page',
+  name: "page",
   components: {
-    SlicesBlock
+    SlicesBlock,
   },
-  head () {
+  head() {
     return {
-      title: 'Prismic Nuxt.js Multi Page Website',
-    }
+      title:
+        this.$nuxt.$options.head.title +
+        " | " +
+        this.$prismic.asText(this.document.title),
+    };
   },
   async asyncData({ $prismic, params, error }) {
-    try{
+    try {
       // Query to get post content
-      const document = (await $prismic.api.getByUID('page', params.uid)).data
+      const document = (await $prismic.api.getByUID("blog", params.uid)).data;
 
       return {
         // Set slices as variable
-        slices: document.page_content
-      }
+        document: document,
+        slices: document.page_content,
+      };
     } catch (e) {
       // Returns error page
-      error({ statusCode: 404, message: 'Page not found' })
+      error({ statusCode: 404, message: "Page not found" });
     }
   },
-}
+};
 </script>

@@ -5,7 +5,7 @@ export default {
      ** Headers of the page
      */
     head: {
-        title: 'Nuxt + Prismic',
+        title: 'nuxt-js',
         meta: [{
                 charset: 'utf-8'
             },
@@ -57,7 +57,7 @@ export default {
     /*
      ** Plugins to load before mounting the App
      */
-    plugins: [],
+    plugins: ['~plugins/filters.js'],
 
     /*
      ** Nuxt.js modules

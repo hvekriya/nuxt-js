@@ -12,7 +12,7 @@ export default function(doc) {
         return '/'
     }
 
-    if (doc.type === 'page') {
+    if (doc.type === 'blog') {
         return '/blog/' + doc.uid
     }
 
